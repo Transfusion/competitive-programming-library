@@ -18,5 +18,12 @@ std::ostream &operator<<(std::ostream &out, std::vector<T> const &xs)
         out << xs.back();
     return out;
 }
-
+template <typename T>
+void swap(T &a, T &b)
+{
+    T tmp;
+    tmp = a;
+    a = b;
+    b = tmp;
+}
 #define dump(x) cerr << #x " = " << x << endl
