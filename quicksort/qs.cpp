@@ -47,12 +47,12 @@ int q_part(std::vector<T> &a, int l, int r)
 * https://onlinejudge.u-aizu.ac.jp/solutions/problem/ALDS1_6_C/review/6327085/Transfusion/C++17
 */
 template <typename T>
-int q_sort(std::vector<T> &a, int l, int r)
+void q_sort(std::vector<T> &a, int l, int r)
 {
     int q;
     if (l < r)
     {
-        pvt_idx = q_part(a, l, r);
+        int pvt_idx = q_part(a, l, r);
         q_sort(a, l, pvt_idx - 1);
         q_sort(a, pvt_idx + 1, r);
     }
