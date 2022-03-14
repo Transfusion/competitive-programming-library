@@ -1,4 +1,6 @@
 class BIT:
+    """https://atcoder.jp/contests/practice2/submissions/30129628"""
+
     def __init__(self, n):
         self.sums = [0] * (n + 1)
 
