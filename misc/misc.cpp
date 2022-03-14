@@ -27,3 +27,5 @@ void swap(T &a, T &b)
     b = tmp;
 }
 #define dump(x) cerr << #x " = " << x << endl
+typedef long long ll;
+typedef unsigned long long ull;
