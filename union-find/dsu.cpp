@@ -18,7 +18,7 @@ public:
         for (int i = 0; i < sz; i++)
         {
             par[i] = i;
-            size[i] = i;
+            size[i] = 1;
         }
     }
 
