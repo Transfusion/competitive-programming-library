@@ -4,7 +4,7 @@
 #endif
 
 /**
- * https://judge.yosupo.jp/submission/78809
+ * https://judge.yosupo.jp/submission/113659
  */
 class DSU_Iterative_By_Size
 {
@@ -25,12 +25,14 @@ public:
     int find(int a)
     {
         int x = a;
+        int tmp;
         while (this->par[x] != x)
             x = this->par[x];
         while (this->par[a] != x)
         {
+            tmp = this->par[a];
             this->par[a] = x;
-            a = this->par[a];
+            a = tmp;
         }
         return x;
     }

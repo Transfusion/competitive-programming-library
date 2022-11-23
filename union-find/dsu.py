@@ -26,7 +26,7 @@ class DSU_Recursive_By_Size:
 
 class DSU_Iterative_By_Size:
     """Iterative find, rank by size, and path compression
-    https://judge.yosupo.jp/submission/76632"""
+    https://judge.yosupo.jp/submission/113655"""
 
     def __init__(self, n):
         self.par = list(range(n))
@@ -37,8 +37,7 @@ class DSU_Iterative_By_Size:
         while self.par[x] != x:
             x = self.par[x]
         while self.par[a] != x:
-            self.par[a] = x
-            a = self.par[a]
+            self.par[a], a = x, self.par[a]
         return x
 
     def union(self, x, y):
