@@ -19,6 +19,7 @@ class DSU_Recursive_By_Size:
                 xr, yr = yr, xr
             self.par[yr] = xr
             self.size[xr] += self.size[yr]
+            self.size[yr] = 0
             # self.par[self.find(x)] = self.find(y)
             return True
 
@@ -49,5 +50,6 @@ class DSU_Iterative_By_Size:
                 xr, yr = yr, xr
             self.par[yr] = xr
             self.size[xr] += self.size[yr]
+            self.size[yr] = 0
             # self.par[self.find(x)] = self.find(y)
             return True

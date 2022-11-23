@@ -52,6 +52,7 @@ public:
             }
             this->par[yr] = xr;
             this->size[xr] += this->size[yr];
+            this->size[yr] = 0;
             return true;
         }
     }
