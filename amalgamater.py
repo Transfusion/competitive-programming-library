@@ -36,7 +36,7 @@ class CPPAmalgamater(object):
 
     def _amalgamate(self, abs_path: str):
         base_dir = os.path.dirname(abs_path)
-        contents = open(os.path.join(abs_path)).read()
+        contents = open(os.path.join(abs_path), encoding="utf-8").read()
         split_lines = contents.splitlines()
 
         res = []
