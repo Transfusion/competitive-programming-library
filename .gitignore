@@ -1,2 +1,4 @@
 output.*
 atcoder/
+__pycache__/
+*.py[cod]
