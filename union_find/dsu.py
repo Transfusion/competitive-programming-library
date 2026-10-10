@@ -23,6 +23,7 @@ class DSU_Recursive_By_Size:
             # self.par[self.find(x)] = self.find(y)
             return True
 
+DRS = DSU_Recursive_By_Size
 
 class DSU_Iterative_By_Size:
     """Iterative find, rank by size, and path compression
@@ -52,3 +53,5 @@ class DSU_Iterative_By_Size:
             self.size[yr] = 0
             # self.par[self.find(x)] = self.find(y)
             return True
+
+DIS = DSU_Iterative_By_Size
