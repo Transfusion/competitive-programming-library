@@ -8,10 +8,13 @@ def resolve_path(path, *paths) -> str:
     return Path(os.path.join(path, *paths)).resolve()
 
 class CPPAmalgamater(object):
+    def __init__(self, include_paths: list[str] = None):
+        self._include_paths = [str(Path(p).resolve()) for p in (include_paths or [])]
+
     def _is_not_stl(self, include_path: str):
         return not include_path.startswith('<') and not include_path.endswith('>')
         # return "competitive-programming-library" in include_path and not include_path.startswith('<') and not include_path.endswith('>')
-    
+
     def _is_include(self, line: str):
         return line.startswith("#include")
 
@@ -19,6 +22,16 @@ class CPPAmalgamater(object):
         if not self._is_include(line) or not self._is_not_stl(line):
             return None
         return line.replace("#include", "")[2:-1]
+
+    def _resolve_include(self, base_dir: str, include_path: str) -> str:
+        local = resolve_path(base_dir, include_path)
+        if os.path.isfile(local):
+            return local
+        for search_dir in self._include_paths:
+            candidate = resolve_path(search_dir, include_path)
+            if os.path.isfile(candidate):
+                return candidate
+        raise FileNotFoundError(f"cannot resolve include: {include_path} from {base_dir}")
 
     def _amalgamate(self, abs_path: str):
         base_dir = os.path.dirname(abs_path)
@@ -30,7 +43,7 @@ class CPPAmalgamater(object):
         for line in split_lines:
             include_path = self.get_include_path(line)
             if include_path is not None:
-                res.extend(self._amalgamate(resolve_path( base_dir, include_path )))
+                res.extend(self._amalgamate(self._resolve_include(base_dir, include_path)))
             else:
                 res.append(line)
         return res
