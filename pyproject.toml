@@ -1,4 +1,5 @@
 [tool.poetry]
+package-mode = false
 name = "complib-gen"
 version = "0.1.0"
 description = "Simple, opinionated tool that concatenates implementations of various algos into a single file for use in various online judges"
@@ -7,6 +8,8 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+cxxheaderparser = "^1.6.1"
+javalang = "^0.13.0"
 
 [tool.poetry.dev-dependencies]
 
